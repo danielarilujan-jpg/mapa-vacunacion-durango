@@ -1,0 +1,829 @@
+
+/* ==========================================
+   MAPA TEMÁTICO DE VACUNACIÓN EN DURANGO
+   DISEÑO ROSA Y BLANCO
+========================================== */
+
+:root {
+    --rosa-fuerte: #e88eae;
+    --rosa-medio: #f2b8cc;
+    --rosa-claro: #fce8ef;
+    --rosa-palido: #fff6f9;
+    --rosa-borde: #f3d9e3;
+    --blanco: #ffffff;
+    --texto: #5f5660;
+    --texto-suave: #92858c;
+    --sombra: 0 8px 25px rgba(210, 132, 159, 0.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--rosa-palido);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--rosa-fuerte);
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.encabezado {
+    background: var(--blanco);
+    padding: 42px 7%;
+    border-bottom: 1px solid var(--rosa-borde);
+}
+
+.encabezado-contenido {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.etiqueta {
+    display: inline-block;
+    color: #d47799;
+    background: var(--rosa-claro);
+    padding: 6px 13px;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.2px;
+}
+
+.encabezado h1 {
+    color: var(--rosa-fuerte);
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.2;
+    margin-top: 13px;
+    font-weight: 750;
+    letter-spacing: -1px;
+}
+
+.encabezado p {
+    color: var(--texto-suave);
+    margin-top: 9px;
+    font-size: 14px;
+}
+
+/* ==========================================
+   NAVEGACIÓN
+========================================== */
+
+.navegacion {
+    background: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 13px 5%;
+    border-bottom: 1px solid var(--rosa-borde);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navegacion a {
+    color: var(--texto);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 25px;
+    transition: all .25s ease;
+}
+
+.navegacion a:hover {
+    color: white;
+    background: var(--rosa-fuerte);
+}
+
+/* ==========================================
+   CONTENIDO PRINCIPAL
+========================================== */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto 60px;
+}
+
+section {
+    margin-bottom: 38px;
+}
+
+.titulo-seccion {
+    margin-bottom: 22px;
+}
+
+.titulo-seccion h2 {
+    font-size: 25px;
+    color: #d47799;
+    margin-top: 9px;
+    font-weight: 750;
+}
+
+.titulo-seccion p {
+    color: var(--texto-suave);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   PORTADA
+========================================== */
+
+.portada {
+    background: linear-gradient(
+        115deg,
+        #fff0f5,
+        #ffffff 75%
+    );
+    border: 1px solid var(--rosa-borde);
+    border-radius: 22px;
+    padding: 48px;
+    min-height: 245px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.portada > div:first-child {
+    max-width: 690px;
+}
+
+.portada h2 {
+    color: #d47799;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.25;
+    margin: 13px 0;
+}
+
+.portada p {
+    color: var(--texto-suave);
+    font-size: 14px;
+    max-width: 600px;
+    margin-bottom: 23px;
+}
+
+.portada-icono {
+    font-size: 125px;
+    color: #f0b7cc;
+    line-height: 1;
+    padding: 10px 25px;
+    opacity: .85;
+}
+
+.boton-principal {
+    display: inline-block;
+    background: var(--rosa-fuerte);
+    color: white;
+    border-radius: 30px;
+    padding: 12px 23px;
+    font-size: 13px;
+    font-weight: 650;
+    transition: .25s;
+}
+
+.boton-principal:hover {
+    background: #d47799;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   INDICADORES
+========================================== */
+
+.tarjetas-indicadores {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.indicador {
+    background: white;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 17px;
+    padding: 22px 16px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    transition: .25s ease;
+}
+
+.indicador:hover {
+    transform: translateY(-5px);
+    border-color: var(--rosa-medio);
+}
+
+.indicador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    margin: 0 auto 12px;
+    border-radius: 13px;
+    background: var(--rosa-claro);
+    color: #d47799;
+    font-size: 20px;
+}
+
+.indicador h3 {
+    color: var(--rosa-fuerte);
+    font-size: 27px;
+    font-weight: 750;
+}
+
+.indicador p {
+    color: var(--texto-suave);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.indicador-especial {
+    background: #fff0f5;
+    border-color: var(--rosa-medio);
+}
+
+.nota {
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 17px;
+}
+
+/* ==========================================
+   PANELES GENERALES
+========================================== */
+
+.panel {
+    background: white;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--sombra);
+}
+
+/* ==========================================
+   MAPA Y HERRAMIENTAS
+========================================== */
+
+.herramientas-mapa {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 20px;
+}
+
+.campo {
+    min-width: 0;
+}
+
+.campo label {
+    display: block;
+    color: #d47799;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 43px;
+    background: #fffafd;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 10px;
+    padding: 0 12px;
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    transition: .2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--rosa-fuerte);
+    box-shadow: 0 0 0 3px rgba(232, 142, 174, .13);
+}
+
+.boton-secundario {
+    min-height: 43px;
+    padding: 0 18px;
+    border: 1px solid var(--rosa-medio);
+    background: var(--rosa-claro);
+    color: #d47799;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.boton-secundario:hover {
+    background: var(--rosa-fuerte);
+    color: white;
+}
+
+/* ==========================================
+   DISTRIBUCIÓN DEL MAPA
+========================================== */
+
+.mapa-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(260px, .85fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+#mapa {
+    width: 100%;
+    height: 510px;
+    min-height: 350px;
+    border-radius: 15px;
+    border: 1px solid var(--rosa-borde);
+    background: #fffafd;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.leaflet-container {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fffafd;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+}
+
+.leaflet-popup-content {
+    font-size: 12px;
+    color: var(--texto);
+}
+
+/* ==========================================
+   PANEL MUNICIPAL
+========================================== */
+
+.panel-municipio {
+    background: #fffafd;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 16px;
+    padding: 22px;
+    min-width: 0;
+    box-shadow: 0 4px 16px rgba(210, 132, 159, .07);
+}
+
+.panel-municipio h3 {
+    color: var(--rosa-fuerte);
+    font-size: 21px;
+    margin: 13px 0 8px;
+}
+
+.panel-municipio > p {
+    color: var(--texto-suave);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.dato-municipal {
+    background: white;
+    border: 1px solid var(--rosa-borde);
+    padding: 11px 12px;
+    border-radius: 10px;
+    margin-top: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.dato-municipal span {
+    font-size: 10px;
+    color: var(--texto-suave);
+}
+
+.dato-municipal strong {
+    color: #d47799;
+    font-size: 13px;
+}
+
+/* ==========================================
+   INFORMACIÓN DE VACUNACIÓN
+========================================== */
+
+.vacunacion-municipal {
+    margin-top: 23px;
+    padding-top: 19px;
+    border-top: 1px solid var(--rosa-borde);
+}
+
+.vacunacion-municipal h4 {
+    color: #d47799;
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.nota-vacunacion {
+    font-size: 11px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+}
+
+.resumen-vacunacion {
+    background: var(--rosa-palido);
+    border: 1px solid var(--rosa-borde);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 13px 0;
+}
+
+.resumen-vacunacion strong {
+    color: #d47799;
+    font-size: 13px;
+}
+
+.resumen-vacunacion p {
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+.lista-indicadores-vacunacion {
+    margin-top: 14px;
+}
+
+.indicador-vacuna {
+    margin: 15px 0;
+}
+
+.indicador-vacuna-texto {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.indicador-vacuna-texto span {
+    color: var(--texto);
+}
+
+.indicador-vacuna-texto strong {
+    color: #d47799;
+    white-space: nowrap;
+}
+
+.barra-vacuna {
+    height: 8px;
+    width: 100%;
+    background: var(--rosa-claro);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progreso-vacuna {
+    height: 100%;
+    background: linear-gradient(90deg, #f5c8d8, #e88eae);
+    border-radius: 20px;
+    transition: width .5s ease;
+}
+
+.fuente-vacunacion {
+    color: var(--texto-suave);
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 17px;
+    padding-top: 11px;
+    border-top: 1px solid var(--rosa-borde);
+}
+
+/* ==========================================
+   FILTROS Y ESTADÍSTICAS
+========================================== */
+
+.filtros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.grafica-contenedor {
+    width: 100%;
+    min-height: 300px;
+    background: #fffafd;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+}
+
+.grafica-contenedor canvas {
+    max-width: 100%;
+}
+
+.mensaje-grafica {
+    margin-top: 14px;
+    background: var(--rosa-claro);
+    color: #c86e91;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* ==========================================
+   OCHO APARTADOS TEMÁTICOS
+========================================== */
+
+.temas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.tema {
+    min-height: 135px;
+    padding: 19px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    background: white;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: var(--sombra);
+    transition: all .25s ease;
+}
+
+.tema:hover {
+    background: #fff6f9;
+    border-color: var(--rosa-medio);
+    transform: translateY(-4px);
+}
+
+.tema span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 29px;
+    height: 29px;
+    border-radius: 9px;
+    background: var(--rosa-claro);
+    color: #d47799;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.tema strong {
+    color: #d47799;
+    font-size: 14px;
+}
+
+.tema small {
+    color: var(--texto-suave);
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* ==========================================
+   CONTENIDO DE LOS APARTADOS
+========================================== */
+
+.contenido-tema {
+    background: white;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: var(--sombra);
+    min-height: 100px;
+}
+
+.contenido-tema h3 {
+    color: #d47799;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.contenido-tema p {
+    color: var(--texto-suave);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   FUENTES
+========================================== */
+
+.fuente {
+    padding: 16px 18px;
+    background: #fffafd;
+    border: 1px solid var(--rosa-borde);
+    border-radius: 12px;
+    margin-top: 12px;
+    transition: .2s;
+}
+
+.fuente:hover {
+    border-color: var(--rosa-medio);
+    transform: translateX(3px);
+}
+
+.fuente strong {
+    display: block;
+    color: #d47799;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.fuente p {
+    color: var(--texto-suave);
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.fuente a {
+    color: #d47799;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.fuente a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    background: white;
+    border-top: 1px solid var(--rosa-borde);
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 45px;
+}
+
+footer h3 {
+    color: var(--rosa-fuerte);
+    font-size: 19px;
+    margin-bottom: 7px;
+}
+
+footer p {
+    color: var(--texto-suave);
+    font-size: 11px;
+    margin: 3px 0;
+}
+
+/* ==========================================
+   RESPONSIVE: TABLET
+========================================== */
+
+@media (max-width: 950px) {
+
+    .tarjetas-indicadores {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mapa-layout {
+        grid-template-columns: 1fr;
+    }
+
+    #mapa {
+        height: 430px;
+    }
+
+    .temas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE: CELULAR
+========================================== */
+
+@media (max-width: 600px) {
+
+    .encabezado {
+        padding: 30px 6%;
+    }
+
+    .encabezado h1 {
+        font-size: 29px;
+    }
+
+    .navegacion {
+        position: relative;
+        gap: 4px;
+    }
+
+    .navegacion a {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    main {
+        width: 92%;
+        margin-top: 22px;
+    }
+
+    .portada {
+        padding: 27px 22px;
+        min-height: 0;
+    }
+
+    .portada-icono {
+        display: none;
+    }
+
+    .portada h2 {
+        font-size: 27px;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 21px;
+    }
+
+    .tarjetas-indicadores {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .indicador {
+        padding: 17px 10px;
+    }
+
+    .indicador h3 {
+        font-size: 23px;
+    }
+
+    .panel {
+        padding: 19px;
+    }
+
+    .herramientas-mapa {
+        grid-template-columns: 1fr;
+    }
+
+    #mapa {
+        height: 340px;
+    }
+
+    .filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .temas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .tema {
+        padding: 14px;
+        min-height: 125px;
+    }
+
+    .tema strong {
+        font-size: 12px;
+    }
+
+    .tema small {
+        font-size: 10px;
+    }
+
+    .contenido-tema {
+        padding: 19px;
+    }
+
+}
+
+
+
+

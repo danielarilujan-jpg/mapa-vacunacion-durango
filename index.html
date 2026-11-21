@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vacunación en Durango | Mapa temático</title>
+
+    <link rel="stylesheet" href="estilo.css">
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+<header class="encabezado">
+    <div class="encabezado-contenido">
+        <span class="etiqueta">SALUD PÚBLICA · DURANGO, MÉXICO</span>
+        <h1>Vacunación en Durango</h1>
+        <p>Mapa temático interactivo de prevención y protección de la salud</p>
+    </div>
+</header>
+
+<nav class="navegacion">
+    <a href="#inicio">Inicio</a>
+    <a href="#indicadores">Indicadores</a>
+    <a href="#mapa-seccion">Mapa municipal</a>
+    <a href="#estadisticas">Estadísticas</a>
+    <a href="#temas">Apartados</a>
+    <a href="#fuentes">Fuentes</a>
+</nav>
+
+<main>
+
+    <!-- INICIO -->
+    <section id="inicio" class="portada">
+        <div>
+            <span class="etiqueta">PREVENCIÓN DE ENFERMEDADES</span>
+            <h2>La vacunación protege vidas</h2>
+            <p>
+                La vacunación es una de las estrategias más importantes
+                para prevenir enfermedades infecciosas, reducir
+                complicaciones y proteger a las comunidades.
+            </p>
+            <a href="#mapa-seccion" class="boton-principal">
+                Explorar municipios
+            </a>
+        </div>
+
+        <div class="portada-icono">♡</div>
+    </section>
+
+    <!-- INDICADORES -->
+    <section id="indicadores">
+        <div class="titulo-seccion">
+            <span class="etiqueta">DATOS ESTATALES</span>
+            <h2>Indicadores de vacunación</h2>
+            <p>Estimaciones para población infantil de 12 a 35 meses.</p>
+        </div>
+
+        <div class="tarjetas-indicadores">
+
+            <article class="indicador">
+                <span class="indicador-icono">✚</span>
+                <h3>81.4%</h3>
+                <p>Pentavalente / Hexavalente</p>
+            </article>
+
+            <article class="indicador">
+                <span class="indicador-icono">♡</span>
+                <h3>56.3%</h3>
+                <p>Neumocócica</p>
+            </article>
+
+            <article class="indicador">
+                <span class="indicador-icono">+</span>
+                <h3>88.3%</h3>
+                <p>Rotavirus</p>
+            </article>
+
+            <article class="indicador">
+                <span class="indicador-icono">✿</span>
+                <h3>80.5%</h3>
+                <p>Triple viral</p>
+            </article>
+
+            <article class="indicador indicador-especial">
+                <span class="indicador-icono">♡</span>
+                <h3>27.6%</h3>
+                <p>Esquema completo</p>
+            </article>
+
+        </div>
+
+        <p class="nota">
+            Fuente: ENSANUT Continua 2020–2024, resultados de Durango.
+            Estimaciones correspondientes a niñas y niños de 12 a 35 meses.
+            No representan cobertura municipal.
+        </p>
+    </section>
+
+    <!-- MAPA -->
+    <section id="mapa-seccion" class="panel">
+
+        <div class="titulo-seccion">
+            <span class="etiqueta">EXPLORACIÓN TERRITORIAL</span>
+            <h2>Mapa municipal de Durango</h2>
+            <p>
+                Busca un municipio o selecciónalo directamente en el mapa.
+            </p>
+        </div>
+
+        <div class="herramientas-mapa">
+
+            <div class="campo">
+                <label for="buscarMunicipio">Buscar municipio</label>
+                <input
+                    type="text"
+                    id="buscarMunicipio"
+                    placeholder="Ej. Durango, Gómez Palacio..."
+                >
+            </div>
+
+            <div class="campo">
+                <label for="listaMunicipios">Seleccionar municipio</label>
+                <select id="listaMunicipios">
+                    <option value="">Cargando municipios...</option>
+                </select>
+            </div>
+
+            <button id="restablecerMapa" class="boton-secundario">
+                Ver todo Durango
+            </button>
+
+        </div>
+
+        <div class="mapa-layout">
+
+            <div id="mapa"></div>
+
+            <aside id="panelMunicipio" class="panel-municipio">
+
+                <span class="etiqueta">MUNICIPIO SELECCIONADO</span>
+
+                <h3 id="nombreMunicipio">Durango</h3>
+
+                <p id="descripcionMunicipio">
+                    Selecciona un municipio para consultar su información.
+                </p>
+
+                <div class="dato-municipal">
+                    <span>Clave geoestadística</span>
+                    <strong id="claveMunicipio">—</strong>
+                </div>
+
+                <div class="dato-municipal">
+                    <span>Población municipal</span>
+                    <strong id="poblacionMunicipio">No disponible</strong>
+                </div>
+
+                <!-- NUEVA INFORMACIÓN DE VACUNACIÓN -->
+                <div class="vacunacion-municipal">
+
+                    <h4>Información de vacunación</h4>
+
+                    <p class="nota-vacunacion">
+                        Indicadores disponibles según el grupo de edad.
+                    </p>
+
+                    <div id="vacunacionMunicipal">
+                        <p>
+                            Selecciona un municipio para consultar
+                            los indicadores.
+                        </p>
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+        <p class="nota" id="estadoMapa">
+            Preparando información geográfica...
+        </p>
+
+        <p class="nota">
+            Cartografía municipal: INEGI, Servicio Web del Catálogo
+            Único de Claves Geoestadísticas.
+        </p>
+
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section id="estadisticas" class="panel">
+
+        <div class="titulo-seccion">
+            <span class="etiqueta">ANÁLISIS ESTADÍSTICO</span>
+            <h2>Consulta las coberturas estimadas</h2>
+            <p>Filtra los indicadores disponibles para Durango.</p>
+        </div>
+
+        <div class="filtros">
+
+            <div class="campo">
+                <label for="filtroEdad">Grupo de edad</label>
+                <select id="filtroEdad">
+                    <option value="12-35">12 a 35 meses</option>
+                    <option value="0-11">0 a 11 meses</option>
+                    <option value="3-5">3 a 5 años</option>
+                    <option value="6-11">6 a 11 años</option>
+                    <option value="12-17">12 a 17 años</option>
+                    <option value="18-59">18 a 59 años</option>
+                    <option value="60+">60 años o más</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="filtroVacuna">Tipo de vacuna</label>
+                <select id="filtroVacuna">
+                    <option value="todas">Todas las vacunas</option>
+                    <option value="Pentavalente / Hexavalente">Pentavalente / Hexavalente</option>
+                    <option value="Neumocócica">Neumocócica</option>
+                    <option value="Rotavirus">Rotavirus</option>
+                    <option value="Triple viral">Triple viral</option>
+                    <option value="Esquema completo">Esquema completo</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="grafica-contenedor">
+            <canvas id="graficaVacunacion"></canvas>
+        </div>
+
+        <div id="mensajeGrafica" class="mensaje-grafica">
+            Indicadores estatales estimados por ENSANUT.
+        </div>
+
+        <p class="nota">
+            Periodo de referencia: 2021–2024. Estimaciones estatales
+            de ENSANUT Continua 2020–2024. No son registros administrativos
+            ni resultados desglosados por municipio.
+        </p>
+
+    </section>
+
+    <!-- OCHO APARTADOS -->
+    <section id="temas">
+
+        <div class="titulo-seccion">
+            <span class="etiqueta">INFORMACIÓN TEMÁTICA</span>
+            <h2>Conoce los ocho apartados</h2>
+            <p>Selecciona cada tema para consultar su contenido.</p>
+        </div>
+
+        <div class="temas-grid">
+
+            <button class="tema" onclick="mostrarTema('importancia')">
+                <span>01</span>
+                <strong>Importancia</strong>
+                <small>Prevención y protección</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('riesgos')">
+                <span>02</span>
+                <strong>Riesgos</strong>
+                <small>Enfermedades prevenibles</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('recursos')">
+                <span>03</span>
+                <strong>Recursos</strong>
+                <small>Infraestructura y personal</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('areas')">
+                <span>04</span>
+                <strong>Áreas perjudicadas</strong>
+                <small>Impacto social y económico</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('poblacion')">
+                <span>05</span>
+                <strong>Población vulnerable</strong>
+                <small>Grupos prioritarios</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('beneficios')">
+                <span>06</span>
+                <strong>Beneficios</strong>
+                <small>Protección individual y colectiva</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('consecuencias')">
+                <span>07</span>
+                <strong>Consecuencias</strong>
+                <small>Baja cobertura de vacunación</small>
+            </button>
+
+            <button class="tema" onclick="mostrarTema('soluciones')">
+                <span>08</span>
+                <strong>Soluciones</strong>
+                <small>Acciones de prevención</small>
+            </button>
+
+        </div>
+
+        <article id="contenidoTema" class="contenido-tema">
+            <h3>Selecciona un apartado</h3>
+            <p>La información aparecerá en este espacio.</p>
+        </article>
+
+    </section>
+
+    <!-- FUENTES -->
+    <section id="fuentes" class="panel">
+
+        <div class="titulo-seccion">
+            <span class="etiqueta">REFERENCIAS</span>
+            <h2>Fuentes de información</h2>
+        </div>
+
+        <div class="fuente">
+            <strong>ENSANUT Continua 2020–2024</strong>
+            <p>Resultados de vacunación para Durango.</p>
+            <a href="https://doi.org/10.21149/17642" target="_blank" rel="noopener">
+                Consultar artículo científico
+            </a>
+        </div>
+
+        <div class="fuente">
+            <strong>Instituto Nacional de Estadística y Geografía (INEGI)</strong>
+            <p>Catálogo Único de Claves Geoestadísticas y cartografía municipal.</p>
+            <a href="https://www.inegi.org.mx/servicios/catalogounico/" target="_blank" rel="noopener">
+                Consultar INEGI
+            </a>
+        </div>
+
+        <div class="fuente">
+            <strong>Organización Mundial de la Salud (OMS)</strong>
+            <p>Información general sobre vacunas e inmunización.</p>
+            <a href="https://www.who.int/es/news-room/questions-and-answers/item/vaccines-and-immunization-what-is-vaccination" target="_blank" rel="noopener">
+                Consultar OMS
+            </a>
+        </div>
+
+        <div class="fuente">
+            <strong>Servicios de Salud de Durango</strong>
+            <p>Información institucional y programas de salud.</p>
+            <a href="https://salud.durango.gob.mx/" target="_blank" rel="noopener">
+                Consultar portal estatal
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <h3>Vacunación en Durango</h3>
+    <p>Mapa temático interactivo · Proyecto académico</p>
+    <p>Fuentes: INEGI, ENSANUT y OMS.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="funciones.js"></script>
+
+</body>
+</html>
+
+
+
+
+
